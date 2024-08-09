@@ -62,6 +62,7 @@
 \usepackage{microtype} 			% para melhorias de justificação
 \usepackage{multirow}
 \usepackage{float}
+\usepackage{amsmath}
 % ---
 		
 % ---
@@ -94,17 +95,11 @@
 	\fi}%
 % ---
 
-%%criar um novo estilo de cabeçalhos e rodapés
-%%cabeçalhos
-% \makeevenhead{plain} %%pagina par
-% 	{\includegraphics[width=1cm]{figuras/logo-ifrs.png}}
-% 	{centro \thepage}
-% 	{direita}
+\usepackage{titlesec}
+\titlespacing*{\chapter}{20cm}{20cm}{20cm}
 
+% Adiciona o logo do campus Rolante no cabeçalho de todas as páginas 
 \makeoddhead{plain}{\hspace{-2cm}{\raisebox{0cm}[0pt][0pt]{\includegraphics[width=5cm]{figuras/logo-ifrs.png}}}}{}{}
-
-
-% \makeheadrule{plain}{\textwidth}{\normalrulethickness} %linha
 
 % Imprime números ao invés de símbolos no comando \thanks
 \thanksmarkseries{arabic}
@@ -266,7 +261,7 @@ Compreende a revisão da literatura, metodologia e exposição da pesquisa. A re
 
 \section{Estrutura do artigo}
 
-A estrutura do artigo é constituída de elementos pré-textuais, textuais e pós-textuais. Conforme esquema descrito na Tabela \ref{tbl1}.
+A estrutura do artigo é constituída de elementos pré-textuais, textuais e pós-textuais. Conforme esquema descrito na Tabela~\ref{tbl1}.
 
 \begin{table}[h]
 	\centering
@@ -294,7 +289,7 @@ A estrutura do artigo é constituída de elementos pré-textuais, textuais e pó
 
 \section{Sobre o modelo em \LaTeX}
 
-Este documento e seu código-fonte formam o modelo \LaTeX\ de artigo para TCC no IFRS \textit{campus} Rolante. Ele é baseado nos pacotes \textsf{abntex2} e \textsf{abntex2cite}. O documento exemplifica a elaboração de publicação periódica científica impressa produzida conforme a ABNT NBR 6022:2018 \emph{Informação e documentação - Artigo em publicação periódica científica - Apresentação}. Uma lista completa das normas observadas pelo \abnTeX\  é apresentada em \citeonline{abntex2classe}.
+Este documento e seu código-fonte formam o modelo \LaTeX\ de artigo para TCC no IFRS \textit{campus} Rolante. Ele é baseado nos pacotes \abnTeX\ e \textsf{abntex2cite}. O documento exemplifica a elaboração de publicação periódica científica impressa produzida conforme a ABNT NBR 6022:2018 \emph{Informação e documentação - Artigo em publicação periódica científica - Apresentação}. Uma lista completa das normas observadas pelo \abnTeX\  é apresentada em \citeonline{abntex2classe}.
 
 Faça upload deste modelo (com todos os seus arquivos) no \href{https://overleaf.com/project}{overleaf}, um  serviço gratuito e online de edição e compilação de arquivos \LaTeX. Alternativamente, faça uso de um editor offline (como o \texttt{texmaker} ou o \texttt{textstudio}), ou utilize um plugin para sua IDE preferida (como o \LaTeX Workshop para o Visual Studio).
 
@@ -330,7 +325,7 @@ Informação bônus: o google scholar gera o código BibTeX de artigos e livros.
 
 Figuras/imagens devem ser, idealmente, vetoriais. Imagens vetoriais não descrevem cores de pixels, mas sim formas geométricas. O leitor PDF interpreta estas imagens e as mostra sem a inclusão de borrados, sombras ou outros problemas. 
 
-Use ferramentas como o \href{https://draw.io}{draw.io} para criar desenhos, fluxos, diagramas, e etc em formato vetorial. Basta exportar sua figura no formato PDF e usar alguma ferramenta para remover as bordas do PDF como o \href{https://pdfresizer.com/crop}{pdfresizer}. Isso é necessário pois geralmente a exportação em PDF será feita no formato A4 para impressão. Por fim, inclua e faça referência da imagem no seu texto conforme o exemplo abaixo. Lembre-se, toda Figura deve ser referenciada e explicada no texto. Por exemplo, a Figura \ref{fig1} mostra um fluxograma.
+Use ferramentas como o \href{https://draw.io}{draw.io} para criar desenhos, fluxos, diagramas, e etc em formato vetorial. Basta exportar sua figura no formato PDF e usar alguma ferramenta para remover as bordas do PDF como o \href{https://pdfresizer.com/crop}{pdfresizer}. Isso é necessário pois geralmente a exportação em PDF será feita no formato A4 para impressão. Por fim, inclua e faça referência da imagem no seu texto conforme o exemplo abaixo. Lembre-se, toda Figura deve ser referenciada e explicada no texto. Por exemplo, a Figura~\ref{fig1} mostra um fluxograma.
 
 \begin{figure}[h]
 	\centering
@@ -348,7 +343,26 @@ Todas as figuras e tabelas devem ter sua breve descrição na parte superior e a
 
 \subsubsection{Tabelas}
 
-A criação de tabelas no \LaTeX\ é uma arte. De início, use sites como o \href{https://www.tablesgenerator.com/}{tablesgenerator.com}. Nele você graficamente desenha a tabela que deseja e ele gerará o código \LaTeX. 
+A criação de tabelas no \LaTeX\ é uma arte. De início, use sites como o \href{https://www.tablesgenerator.com/}{tablesgenerator.com}. Nele você graficamente desenha a tabela que deseja e ele gerará o código \LaTeX. As regras gerais são não criar linhas separadoras verticais, apenas horizontais para delimitar o início da tabela, o cabeçalho, e o fim da tabela. Apenas use linhas horizontais no meio da tabela quando estritamente necessário. Por exemplo, como foi feito na Tabela~\ref{tbl1}. Sempre use sempre as opções do pacote \verb|booksmark| (incluído pelo \abnTeX\ por padrão) para as separações horizontais. São elas o \verb|\toprule| para início, o \verb|\midrule| para o fim do cabeçalho e eventuais linhas horizontais no meio da tabela e \verb|\bottomrule| para o fim da tabela.
+
+\subsubsection{Equações}
+
+Evite equações \textit{in line}, ou seja, dentro do texto. A preferência sempre deve ser por equações definidas com o \verb|\begin{equation}|, de forma que as equações sejam numeradas e que você possa referenciá-las no texto. Por exemplo, veja a Equação~\ref{eq1}:
+
+\begin{equation} \label{eq1}
+	a^2 = b^2 + c^2
+\end{equation}
+
+Também é possível alinhar as com o ambiente \verb|\begin{split}| fazendo uso do \verb|&| como indicador de alinhamento. Veja um exemplo de equações alinhadas na Equação~\ref{eq2}.
+
+\begin{equation} \label{eq2}
+	\begin{split}
+	A & = \frac{\pi r^2}{2} \\
+	 & = \frac{1}{2} \pi r^2
+	\end{split}
+\end{equation}
+
+Uma lista abrangente de símbolos matemáticos está disponível \href{https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols}{aqui}.
 
 % ---
 % Conclusão
@@ -405,7 +419,5 @@ Elemento obrigatório. A conclusão/considerações finais é a parte final do a
 % ----------------------------------------------------------
 
 \section*{Agradecimentos}
-Texto sucinto aprovado pelo periódico em que será publicado. Último 
-elemento pós-textual.
-
+O presente trabalho foi realizado com apoio do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul (IFRS).
 \end{document}
