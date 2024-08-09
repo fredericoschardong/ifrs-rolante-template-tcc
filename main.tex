@@ -94,6 +94,18 @@
 	\fi}%
 % ---
 
+%%criar um novo estilo de cabeçalhos e rodapés
+%%cabeçalhos
+% \makeevenhead{plain} %%pagina par
+% 	{\includegraphics[width=1cm]{figuras/logo-ifrs.png}}
+% 	{centro \thepage}
+% 	{direita}
+
+\makeoddhead{plain}{\hspace{-2cm}{\raisebox{0cm}[0pt][0pt]{\includegraphics[width=5cm]{figuras/logo-ifrs.png}}}}{}{}
+
+
+% \makeheadrule{plain}{\textwidth}{\normalrulethickness} %linha
+
 % Imprime números ao invés de símbolos no comando \thanks
 \thanksmarkseries{arabic}
 

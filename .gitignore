@@ -17,3 +17,7 @@
 *.simbolos
 .DS_Store
 *.blg
+*.fls
+*.ilg
+*.ind
+*.fd*
