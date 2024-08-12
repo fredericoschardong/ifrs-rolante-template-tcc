@@ -1,41 +1,26 @@
 % !TEX root = main.tex
 
 \input{pre-textuais/0-configuracoes.tex}
-\input{pre-textuais/1-metadados.tex}
+\input{pre-textuais/1-titulo-autor.tex}
 
 \begin{document}
+    \pretextual
 
-\pretextual
+    \input{pre-textuais/2-resumo.tex}
 
-% página de título principal (obrigatório)
-\maketitle
+    \textual
 
-% título em outro idioma (opcional)
-\noindent\rule{\textwidth}{1pt}
+    \input{textuais/0-introducao.tex}
+    \input{textuais/1-desenvolvimento.tex}
+    \input{textuais/2-estrutura.tex}
+    \input{textuais/3-latex.tex}
+    \input{textuais/4-conclusao.tex}
 
-\input{pre-textuais/2-resumo.tex}
+    \postextual
 
-\textual
+    \bibliography{referencias}
 
-\input{textuais/0-introducao.tex}
-\input{textuais/1-desenvolvimento.tex}
-\input{textuais/2-estrutura.tex}
-\input{textuais/3-latex.tex}
-\input{textuais/4-conclusao.tex}
-
-\postextual
-
-\bibliography{referencias}
-
-% ----------------------------------------------------------
-% Glossário
-% ----------------------------------------------------------
-%
-% Há diversas soluções prontas para glossário em LaTeX. 
-% Consulte o manual do abnTeX2 para obter sugestões.
-%
-%\glossary
-
-\input{pos-textuais/0-apendices.tex}
-\input{pos-textuais/1-anexos.tex}
-\input{pos-textuais/2-agradecimentos.tex}
+    \input{pos-textuais/0-apendices.tex}
+    \input{pos-textuais/1-anexos.tex}
+    \input{pos-textuais/2-agradecimentos.tex}
+\end{document}
